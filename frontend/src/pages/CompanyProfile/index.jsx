@@ -12,6 +12,7 @@ const CompanyListPage = () => {
 	const fetchCompanies = async () => {
 		try {
 			console.log("99999999");
+			return;
 			const response = await axios.get(`https://test-backend-esg.grocerymanagement.id.vn/get-all-company`);
 			if (response.data.status === 200) {
 				setCompanies(response.data.data);
