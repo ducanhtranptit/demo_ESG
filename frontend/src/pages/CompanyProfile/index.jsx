@@ -19,7 +19,7 @@ const CompanyListPage = () => {
 			// 	console.error("Failed to fetch companies");
 			// }
 		} catch (error) {
-			console.error("Error fetching companies:", error);
+			// console.error("Error fetching companies:", error);
 		}
 	};
 
@@ -34,6 +34,7 @@ const CompanyListPage = () => {
 	};
 
 	useEffect(() => {
+        console.log('000000000');
 		fetchCompanies();
 	}, []);
 
