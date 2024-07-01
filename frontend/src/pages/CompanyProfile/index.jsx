@@ -11,7 +11,7 @@ const CompanyListPage = () => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get(`${baseUrl}/get-all-company`);
+      const response = await axios.get(`https://test-backend-esg.grocerymanagement.id.vn/get-all-company`);
       if (response.data.status === 200) {
         setCompanies(response.data.data);
       } else {
