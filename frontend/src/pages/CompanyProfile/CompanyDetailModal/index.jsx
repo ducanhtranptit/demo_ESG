@@ -9,7 +9,7 @@ const CompanyDetailModal = ({ companyId, closeModal }) => {
 
 	const fetchCompanyDetails = async (id) => {
 		try {
-			const response = await axios.get(`https://test-backend-esg.grocerymanagement.id.vn/get-all-company-infor/${id}`);
+			const response = await axios.get(`${baseUrl}/get-all-company-infor/${id}`);
 			if (response.data.status === 200) {
 				setCompanyDetails(response.data.data);
 			} else {
