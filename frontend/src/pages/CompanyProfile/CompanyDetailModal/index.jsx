@@ -79,6 +79,8 @@ const CompanyDetailModal = ({ companyId, closeModal }) => {
 				<div className="mb-3">
 					<strong>Company Description:</strong> {overallInfor[0].companyDescription}
 				</div>
+                <strong>Contact information:</strong>
+                <div dangerouslySetInnerHTML={{ __html: overallInfor[0].contactInformation }} />
 				<hr />
 				<div className="mb-3">
 					<strong>Total Revenue:</strong> {totalRevenue}
@@ -160,7 +162,6 @@ const CompanyDetailModal = ({ companyId, closeModal }) => {
 						</tbody>
 					</Table>
 				</div>
-				<div dangerouslySetInnerHTML={{ __html: overallInfor[0].contactInformation }} />
 			</Modal.Body>
 			<Modal.Footer>
 				<Button variant="secondary" onClick={closeModal}>
