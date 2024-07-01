@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal, Button, Spinner, Table } from "react-bootstrap";
+import { baseUrl } from "../../../config/url-config";
 
 const CompanyDetailModal = ({ companyId, closeModal }) => {
 	const [companyDetails, setCompanyDetails] = useState(null);
@@ -8,7 +9,7 @@ const CompanyDetailModal = ({ companyId, closeModal }) => {
 
 	const fetchCompanyDetails = async (id) => {
 		try {
-			const response = await axios.get(`http://localhost:8080/get-all-company-infor/${id}`);
+			const response = await axios.get(`${baseUrl}/get-all-company-infor/${id}`);
 			if (response.data.status === 200) {
 				setCompanyDetails(response.data.data);
 			} else {

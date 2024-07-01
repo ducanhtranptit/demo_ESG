@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CompanyDetailModal from './CompanyDetailModal/index.jsx';
 import { Table, Button } from 'react-bootstrap';
+import { baseUrl } from '../../config/url-config.js';
 
 const CompanyListPage = () => {
   const [companies, setCompanies] = useState([]);
@@ -10,7 +11,7 @@ const CompanyListPage = () => {
 
   const fetchCompanies = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/get-all-company');
+      const response = await axios.get(`${baseUrl}/get-all-company`);
       if (response.data.status === 200) {
         setCompanies(response.data.data);
       } else {
