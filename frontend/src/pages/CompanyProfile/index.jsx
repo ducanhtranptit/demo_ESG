@@ -10,17 +10,7 @@ const CompanyListPage = () => {
 	const [modalOpen, setModalOpen] = useState(false);
 
 	const fetchCompanies = async () => {
-		try {
-			console.log("99999999");
-			// const response = await axios.get(`https://test-backend-esg.grocerymanagement.id.vn/get-all-company`);
-			// if (response.data.status === 200) {
-			// 	setCompanies(response.data.data);
-			// } else {
-			// 	console.error("Failed to fetch companies");
-			// }
-		} catch (error) {
-			// console.error("Error fetching companies:", error);
-		}
+		console.log("99999999");
 	};
 
 	const handleViewDetails = (companyId) => {
@@ -34,7 +24,7 @@ const CompanyListPage = () => {
 	};
 
 	useEffect(() => {
-        console.log('000000000');
+		console.log("000000000");
 		fetchCompanies();
 	}, []);
 
