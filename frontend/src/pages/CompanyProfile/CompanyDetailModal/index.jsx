@@ -53,7 +53,7 @@ const CompanyDetailModal = ({ companyId, closeModal }) => {
 	const totalProductRevenue = productInfors.reduce((total, product) => (total += product.revenue), 0);
 
 	return (
-		<Modal show={true} onHide={closeModal} centered>
+		<Modal show={true} onHide={closeModal} centered size="xl">
 			<Modal.Header closeButton>
 				<Modal.Title>{overallInfor[0].companyName}</Modal.Title>
 			</Modal.Header>

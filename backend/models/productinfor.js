@@ -4,8 +4,6 @@ module.exports = (sequelize, DataTypes) => {
 	class ProductInfor extends Model {
 		static associate(models) {
 			ProductInfor.belongsTo(models.OverallInfor, { foreignKey: "companyId" });
-		}
-		static associate(models) {
 			ProductInfor.belongsTo(models.ProductType, { foreignKey: "productType" });
 		}
 	}

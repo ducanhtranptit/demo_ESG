@@ -36,6 +36,45 @@ class CompanyInfoAction {
 		};
 		return result;
 	}
+
+	async createCompanyInfor(overallInfor, siteInfors, productInfors) {
+		const newCompany = await OverallInfor.create({
+			companyName: overallInfor.companyName,
+			dateFounder: parseInt(overallInfor.dateFounder),
+			mainAddress: overallInfor.mainAddress,
+			mainPhoneNumber: overallInfor.mainPhoneNumber,
+			companyWebsite: overallInfor.companyWebsite,
+			companySector: overallInfor.companySector,
+			companyDescription: overallInfor.companyDescription,
+			totalRevenue: parseInt(overallInfor.totalRevenue),
+			netIncome: parseInt(overallInfor.netIncome),
+			fullTimeEmployee: parseInt(overallInfor.fullTimeEmployees),
+			partTimeEmployee: parseInt(overallInfor.partTimeEmployees),
+			contactInformation: overallInfor.contactInformation,
+		});
+
+		// Create site information
+		await SiteInfor.bulkCreate(
+			siteInfors.map((site) => ({
+				companyId: newCompany.id,
+				siteName: site.siteName,
+				numberEmployees: parseInt(site.numberOfEmployees),
+				comment: site.comment,
+			}))
+		);
+
+		// Create product information if needed
+		if (productInfors.length > 0) {
+			await ProductInfor.bulkCreate(
+				productInfors.map((product) => ({
+					companyId: newCompany.id,
+					productName: product.productName,
+					revenue: parseInt(product.revenue),
+					comment: product.comment,
+				}))
+			);
+		}
+	}
 }
 
 module.exports = new CompanyInfoAction();

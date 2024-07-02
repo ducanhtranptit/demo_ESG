@@ -4,8 +4,6 @@ module.exports = (sequelize, DataTypes) => {
 	class OverallInfor extends Model {
 		static associate(models) {
 			OverallInfor.hasMany(models.SiteInfor, { foreignKey: "companyId" });
-		}
-		static associate(models) {
 			OverallInfor.hasMany(models.ProductInfor, { foreignKey: "companyId" });
 		}
 	}

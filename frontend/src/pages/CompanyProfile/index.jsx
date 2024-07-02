@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CompanyDetailModal from "./CompanyDetailModal/index.jsx";
+import { toast } from "react-toastify";
+import CreateCompanyDetailModal from "./CreateCompanyDetailModal/index.jsx";
 import { Table, Button } from "react-bootstrap";
 import { baseUrl } from "../../config/url-config.js";
 
@@ -8,6 +10,7 @@ const CompanyListPage = () => {
 	const [companies, setCompanies] = useState([]);
 	const [selectedCompanyId, setSelectedCompanyId] = useState(null);
 	const [modalOpen, setModalOpen] = useState(false);
+	const [createModalOpen, setCreateModalOpen] = useState(false);
 
 	const fetchCompanies = async () => {
 		try {
@@ -32,13 +35,27 @@ const CompanyListPage = () => {
 		setSelectedCompanyId(null);
 	};
 
+	const handleOpenCreateModal = () => {
+		setCreateModalOpen(true);
+	};
+
+	const handleCloseCreateModal = () => {
+		setCreateModalOpen(false);
+		fetchCompanies();
+	};
+
 	useEffect(() => {
 		fetchCompanies();
 	}, []);
 
 	return (
 		<div className="container mt-5">
-			<h2 className="mb-4">Company List</h2>
+			<div className="d-flex justify-content-between mb-4">
+				<h2>Company List</h2>
+				<Button variant="success" onClick={handleOpenCreateModal}>
+					Thêm mới
+				</Button>
+			</div>
 			<Table striped bordered hover>
 				<thead>
 					<tr>
@@ -63,6 +80,7 @@ const CompanyListPage = () => {
 			</Table>
 
 			{modalOpen && <CompanyDetailModal companyId={selectedCompanyId} closeModal={handleCloseModal} />}
+			{createModalOpen && <CreateCompanyDetailModal show={createModalOpen} handleClose={handleCloseCreateModal} />}
 		</div>
 	);
 };
